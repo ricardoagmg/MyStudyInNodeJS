@@ -13,6 +13,8 @@
 - [x] Deve ser possível obter dados da conta do cliente
 - [x] Deve ser possível deletar uma conta
 - [x] Deve ser possível retornar o balanço
+- [x] Deve ser possível retornar o todos os clientes
+- [x] Deve ser possível fazer transferencia entre clientes
 
 
 ### Regras de negócio

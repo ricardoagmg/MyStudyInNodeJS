@@ -50,7 +50,7 @@ app.post("/account",(request,response)=>{
     return response.status(201).send();
 })
 
-app.get("/saldo/",existCostumer,(request,response)=>{
+app.get("/statement/",existCostumer,(request,response)=>{
     const {costumer} = request; 
     return response.json(costumer.statement)
 })
@@ -127,6 +127,24 @@ app.get("/balance", existCostumer, (request,response)=>{
     let balance = getBalance(costumer.statement);
 
     return response.status(200).json(balance);
+})
+
+app.get("/todas", (request,response)=>{
+    return response.status(200).json(costumers);
+})
+
+app.put("/transfer",(request, response)=>{
+    const operations = request.body;
+    
+    operations.map(operation=>{
+        costumers.map(costumer=>{
+            if (costumer.cpf == operation.cpf){
+                costumer.statement.push(operation);
+            }
+        })
+    })
+
+    return response.status(200).send();
 })
 
 app.listen(3031);
